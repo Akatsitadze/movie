@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-//FIXME: mark the code
 class ImageManager {
    
     static let shared = ImageManager()
@@ -32,6 +31,7 @@ class ImageManager {
         }
     }
     
+    // MARK: - Image loader
     static func localImageUrl(for item : Item) -> URL {
         var doc = imageType.item.cacheUrl
         doc.appendPathComponent("item")
@@ -39,6 +39,7 @@ class ImageManager {
         return doc.appendingPathComponent(item.id!.description).appendingPathExtension("jpg")
     }
     
+    // MARK: - Image downloader
     func downloadImage(for item : Item, priority : DownloadPriority) {
 
         if let task = imageQueue.sync(execute: { () -> URLSessionTask? in return self.requestsDeal[item] }) {

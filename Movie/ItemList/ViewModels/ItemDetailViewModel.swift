@@ -7,9 +7,9 @@
 
 import Foundation
 
-//FIXME: make marks
 class ItemDetailViewModel {
     
+    //MARK: Properti
     let item: Item
     
     init(with item: Item) {
@@ -17,7 +17,7 @@ class ItemDetailViewModel {
     }
     
     func diplayName() -> String? {
-        return item.original_name
+        return item.originalName
     }
     
     func description() -> String? {
@@ -25,14 +25,14 @@ class ItemDetailViewModel {
     }
     
     func rate() -> String? {
-        guard let vote = item.vote_average else {
+        guard let vote = item.voteAverage else {
             return nil
         }
         return String(format: "%.2f", vote)
     }
     
     func imageUrl() -> URL? {
-        guard let poster_path = item.poster_path,
+        guard let poster_path = item.posterPath,
               let url = URL(string: String(format: Constants.imagePath, poster_path)) else {
             return nil
         }

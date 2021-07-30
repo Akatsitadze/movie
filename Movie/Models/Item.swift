@@ -8,28 +8,44 @@
 import Foundation
 
 struct Item: Decodable {
-    let poster_path: String?
+    let posterPath: String?
     let popularity: Double?
     let id: Int?
-    let backdrop_path: String?
-    let vote_average: Double?
+    let backdropPath: String?
+    let voteAverage: Double?
     let overview: String?
-    let first_air_date: String?
-    let origin_country: [String]?
-    let genre_ids: [Int]?
-    let original_language: String?
-    let vote_count: Int?
+    let firstAirDate: String?
+    let originCountry: [String]?
+    let genreIds: [Int]?
+    let originalLanguage: String?
+    let voteCount: Int?
     let name: String?
-    let original_name: String?
+    let originalName: String?
     
     //FIXME: better to remove snake case and make camal case
     
     public func imageUrl() -> URL? {
-        guard let poster_path = self.poster_path,
+        guard let poster_path = self.posterPath,
               let url = URL(string: String(format: Constants.imagePath, poster_path)) else {
             return nil
         }
         return url
+    }
+    
+    enum StructKeys : String, CodingKey {
+        case posterPath = "poster_path"
+        case popularity = "popularity"
+        case id = "id"
+        case backdropPath = "backdrop_path"
+        case voteAverage = "vote_average"
+        case overview = "overview"
+        case firstAirDate = "first_air_date"
+        case originCountry = "origin_country"
+        case genreIds = "genre_ids"
+        case originalLanguage = "original_language"
+        case voteCount = "vote_count"
+        case name = "name"
+        case originalName = "original_name"
     }
 }
 

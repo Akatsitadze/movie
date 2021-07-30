@@ -7,9 +7,9 @@
 
 import Foundation
 
-//FIXME: make marks
 class ItemViewModel {
 
+    //MARK: Properties
     var canFetchData = true
     
     //MARK: Private Properties
@@ -40,7 +40,7 @@ class ItemViewModel {
     }
     
     func diplayName(at index: Int) -> String? {
-        return items[index].original_name
+        return items[index].originalName
     }
     
     func description(at index: Int) -> String? {
@@ -48,14 +48,14 @@ class ItemViewModel {
     }
     
     func rate(at index: Int) -> String? {
-        guard let vote = items[index].vote_average else {
+        guard let vote = items[index].voteAverage else {
             return nil
         }
         return String(format: "\(Constants.rate) %.2f", vote)
     } 
     
     func imageUrl(at index: Int) -> URL? {
-        guard let poster_path = items[index].poster_path,
+        guard let poster_path = items[index].posterPath,
               let url = URL(string: String(format: Constants.imagePath, poster_path)) else {
             return nil
         }

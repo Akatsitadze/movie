@@ -25,6 +25,13 @@ struct GetItemListService: RequestType {
 struct PopularServiceResponse: Decodable {
     let page: Int?
     let results: [Item]?
-    let total_results: Int?
-    let total_pages: Int?
+    let totalResults: Int?
+    let totalPages: Int?
+    
+    enum StructKeys : String, CodingKey {
+        case page = "page"
+        case results = "results"
+        case totalResults = "total_results"
+        case totalPages = "total_pages"
+    }
 }

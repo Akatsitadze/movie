@@ -23,7 +23,6 @@ class ItemListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        //FIXME: where is notification removing code? removeNotificationObserver() is unused
         addNotificationObserver(forNames: .updateItem, object: nil, queue: .main) { [weak self](notif) in
             guard let item = notif.object as? Item else { return }
             guard let index = self?.viewModel.items.firstIndex(of: item) else { return }
@@ -46,6 +45,10 @@ class ItemListViewController: UIViewController {
         vc.detailViewModel = viewModel
         guard let itemId = viewModel.item.id else { return }
         vc.similarViewModel = SimilarItemViewModel(with: itemId)
+    }
+    
+    deinit {
+        removeNotificationObserver()
     }
 }
 

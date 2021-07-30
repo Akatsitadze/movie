@@ -8,7 +8,6 @@
 import Foundation
 import UIKit
 
-//FIXME: make marks
 class CustomSplitViewController : UISplitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,7 +15,6 @@ class CustomSplitViewController : UISplitViewController {
         title = Constants.title
     }
 }
-
 
 //MARK: SEGUES
 class SplitViewControllerDetailStoryboardSegue : UIStoryboardSegue {
