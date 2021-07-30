@@ -21,7 +21,6 @@ struct GetItemListService: RequestType {
     }
 }
 
-//FIXME: better to remove snake case and make camal case
 struct PopularServiceResponse: Decodable {
     let page: Int?
     let results: [Item]?

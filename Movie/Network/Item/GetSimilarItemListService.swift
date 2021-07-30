@@ -22,7 +22,6 @@ struct GetSimilarItemListService: RequestType {
     }
 }
 
-//FIXME: better to remove snake case and make camal case
 struct SimilarServiceResponse: Decodable {
     let page: Int?
     let results: [Item]?

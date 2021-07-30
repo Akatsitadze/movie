@@ -21,9 +21,7 @@ struct Item: Decodable {
     let voteCount: Int?
     let name: String?
     let originalName: String?
-    
-    //FIXME: better to remove snake case and make camal case
-    
+        
     public func imageUrl() -> URL? {
         guard let poster_path = self.posterPath,
               let url = URL(string: String(format: Constants.imagePath, poster_path)) else {
