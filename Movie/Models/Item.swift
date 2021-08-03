@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Item: Decodable {
+struct Item: Codable {
     let posterPath: String?
     let popularity: Double?
     let id: Int?
@@ -30,19 +30,38 @@ struct Item: Decodable {
         return url
     }
     
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: StructKeys.self)
+        
+        posterPath = try? container.decode(String.self, forKey: .posterPath)
+        popularity = try? container.decode(Double.self, forKey: .popularity)
+        id = try? container.decode(Int.self, forKey: .id)
+        
+        backdropPath = try? container.decode(String.self, forKey: .backdropPath)
+        voteAverage = try? container.decode(Double.self, forKey: .voteAverage)
+        overview = try? container.decode(String.self, forKey: .overview)
+        firstAirDate = try? container.decode(String.self, forKey: .firstAirDate)
+        originCountry = try? container.decode([String].self, forKey: .originCountry)
+        genreIds = try? container.decode([Int].self, forKey: .genreIds)
+        originalLanguage = try? container.decode(String.self, forKey: .originalLanguage)
+        voteCount = try? container.decode(Int.self, forKey: .voteCount)
+        name = try? container.decode(String.self, forKey: .name)
+        originalName = try? container.decode(String.self, forKey: .originalName)
+    }
+    
     enum StructKeys : String, CodingKey {
         case posterPath = "poster_path"
-        case popularity = "popularity"
-        case id = "id"
+        case popularity
+        case id
         case backdropPath = "backdrop_path"
         case voteAverage = "vote_average"
-        case overview = "overview"
+        case overview
         case firstAirDate = "first_air_date"
         case originCountry = "origin_country"
         case genreIds = "genre_ids"
         case originalLanguage = "original_language"
         case voteCount = "vote_count"
-        case name = "name"
+        case name
         case originalName = "original_name"
     }
 }
